@@ -9,6 +9,12 @@ var gateway = braintree.connect({
   privateKey: "b93b07e5ee813d9bb37cddf917343ebd"
 });
 
+app.get("/client_token", function (req, res) {
+  gateway.clientToken.generate({}, function (err, response) {
+    res.send(response.clientToken);
+  });
+});
+
 app.get('/', function (req, res) {
   res.send('Hello Digital Ocean!')
 })
