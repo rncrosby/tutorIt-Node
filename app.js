@@ -22,7 +22,7 @@ app.get("/client_token", (req, res) => {
 
 app.post("/checkout", function (req, res) {
   var nonceFromTheClient = req.body.payment_method_nonce;
-  console.log(nonceFromTheClient)
+  console.log(req)
 });
 
 app.get('/', (req, res) => {
