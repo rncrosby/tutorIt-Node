@@ -21,9 +21,17 @@ app.get("/client_token", (req, res) => {
 })
 
 app.post("/checkout", function (req, res) {
-  var nonceFromTheClient = req.body.payment_method_nonce;
-  console.log(req)
-});
+  var nonceFromTheClient = req.query.nonce
+  gateway.transaction.sale({
+  amount: "10.00",
+  paymentMethodNonce: nonceFromTheClient,
+  options: {
+    submitForSettlement: true
+  }
+  }, function (err, result) {
+  res.send(result)
+  })
+})
 
 app.get('/', (req, res) => {
   console.log("new")
