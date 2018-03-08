@@ -67,6 +67,11 @@ app.post("/verifyEmail", function (req, res) {
   });
 })
 
+app.get('/checkStatus', (req, res) => {
+  console.log("check!")
+    res.send('Success')
+})
+
 app.get('/', (req, res) => {
   console.log("new")
     res.send('Hey, I\'m a Node.js app!')
