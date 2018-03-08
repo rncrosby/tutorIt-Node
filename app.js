@@ -45,7 +45,7 @@ app.post("/checkout", function (req, res) {
   })
 })
 
-app.post("/verifyEmail", function (req, res) {
+app.get("/verifyEmail", function (req, res) {
   var name = req.query.name
   var email = req.query.email
   var code = req.query.code
