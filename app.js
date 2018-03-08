@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const nodemailer = require('nodemailer');
 var braintree = require("braintree");
 
 var gateway = braintree.connect({
@@ -21,6 +22,7 @@ app.get("/client_token", (req, res) => {
 })
 
 app.post("/checkout", function (req, res) {
+  console.log("checkout")
   var nonceFromTheClient = req.query.nonce
   gateway.transaction.sale({
   amount: "10.00",
@@ -31,6 +33,12 @@ app.post("/checkout", function (req, res) {
   }, function (err, result) {
   res.send(result)
   })
+})
+
+app.post("/verifyEmail", function (req, res) {
+  var email = req.query.email
+  var code = req.query.code
+  console.log("verify email"+email+"code"+code)
 })
 
 app.get('/', (req, res) => {
