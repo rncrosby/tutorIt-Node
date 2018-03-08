@@ -48,9 +48,9 @@ app.post("/verifyEmail", function (req, res) {
   var emailText = '<p>Below you will find your TutorIt verification code. Use this code from within the app to activate your account and get started!</p><br><center><b></b><br>'
   const mailOptions = {
     from: 'tutorit.development@gmail.com', // sender address
-    to: email, // list of receivers
+    to: 'rcros97@me.com', // list of receivers
     subject: 'Your TutorIt Verification Code', // Subject line
-    html: emailText// plain text body
+    html: 'hey' // plain text body
   };
 
   transporter.sendMail(mailOptions, function (err, info) {
