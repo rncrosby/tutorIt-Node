@@ -1,6 +1,5 @@
 const express = require('express')
-const app = express()
-const nodemailer = require('nodemailer');
+const app = express();
 var braintree = require("braintree");
 
 var gateway = braintree.connect({
