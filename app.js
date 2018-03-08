@@ -1,6 +1,5 @@
 const express = require('express')
-const app = express()
-const nodemailer = require('nodemailer');
+const app = express();
 var braintree = require("braintree");
 
 var gateway = braintree.connect({
@@ -8,14 +7,6 @@ var gateway = braintree.connect({
   merchantId: "jccpnwq2vh48x8fd",
   publicKey: "gw4hwmmvycs5s4kf",
   privateKey: "b93b07e5ee813d9bb37cddf917343ebd"
-});
-
-var transporter = nodemailer.createTransport({
- service: 'gmail',
- auth: {
-        user: 'tutorit.development@gmail.com',
-        pass: '1EstateDr'
-    }
 });
 
 app.get("/client_token", (req, res) => {
@@ -45,20 +36,6 @@ app.post("/checkout", function (req, res) {
 app.post("/verifyEmail", function (req, res) {
   var email = req.query.email
   var code = req.query.code
-  var emailText = '<p>Below you will find your TutorIt verification code. Use this code from within the app to activate your account and get started!</p><br><center><b></b><br>'
-  const mailOptions = {
-    from: 'tutorit.development@gmail.com', // sender address
-    to: 'rcros97@me.com', // list of receivers
-    subject: 'Your TutorIt Verification Code', // Subject line
-    html: 'hey' // plain text body
-  };
-
-  transporter.sendMail(mailOptions, function (err, info) {
-     if(err)
-       console.log(err)
-     else
-       console.log(info);
-  });
   console.log("verify email"+email+"code"+code)
 })
 
