@@ -45,7 +45,7 @@ app.post("/checkout", function (req, res) {
 app.post("/verifyEmail", function (req, res) {
   var email = req.query.email
   var code = req.query.code
-  var emailText = '<p>Below you will find your TutorIt verification code. Use this code from within the app to activate your account and get started!</p><br><center><b>'+code+'</b><br>'
+  var emailText = '<p>Below you will find your TutorIt verification code. Use this code from within the app to activate your account and get started!</p><br><center><b></b><br>'
   const mailOptions = {
     from: 'tutorit.development@gmail.com', // sender address
     to: email, // list of receivers
